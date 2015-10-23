@@ -18,25 +18,28 @@ A shell script has written for running the project against some test inputs.
 
     ./run.sh
 
-This shell script assemble the project and use the assembled jar file to run against test csv files
-under src/test/resources/
+This shell script assembles the project and use the assembled jar file to run against test csv files
+under src/test/resources/.
 
 Dependencies
 ============
 
 The only dependency used is "org.apache.commons:commons-csv:1.2". This is a csv library provided
-from Apache commons libraries, which has many contributors comparing to other csv libraries.
+from Apache commons libraries, which has many more contributors comparing to other csv libraries.
 
 
 Technical Choices
 =================
 
 * CSV: The choice of using csv is made from knowing that Excel is used by WS for modeling. The
-program may directly used the data modeled from an Excel file.
+program may directly use the data modeled from an Excel file. In addition, this makes
+testing easier.
+
 * Use NumberFormat to parse: NumerFormat correctly handles % and $, which are used in the given
 example.
+
 * Use BigDecimal: The main reason for using BigDecimal is to avoid precision issued caused by using
-doubles. Especially in a context of financial applications.
+doubles. Especially in a context of financial application.
 
 In addition, I had extra caution on the edge cases in the code. This may make the code harder to
 read, I could have make code more organized if I were to spend additional time.
@@ -48,7 +51,7 @@ Gradle provides a nice interface to run Java unit tests.
 
     ./gradlew test
 
-This command compiles and runs all test. The main purpose of the unit tests are to catch invalid
+This command compiles and runs all tests. The main purpose of the unit tests is to catch invalid
 inputs.
 
 Integration tests are executed using the same command as run.
